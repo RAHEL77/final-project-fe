@@ -1,20 +1,22 @@
 import React, { useState } from "react";
-import {apiLogin} from '../api/api'
+import {apiUpdate} from '../../api/userApi'
 
-const Login = () => {
+const Update = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
-  const onLogin = (e) => {
+  const onUpdate = (e) => {
     e.preventDefault();
-    console.log(email, password);
-    apiLogin(email,password)
+    console.log(email,name,password);
+    apiUpdate(email,name,password)
   };
 
   return (
     <div>
-      <form onSubmit={onLogin}>
-        <label htmlFor="email">Email</label>
+      <form onSubmit={onUpdate}>
+
+      <label htmlFor="email">Email</label>
         <input
           type="email"
           id="email"
@@ -22,6 +24,17 @@ const Login = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+
+           <label htmlFor="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          required
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        
+
         <label htmlFor="password">Password</label>
         <input
           type="text"
@@ -30,10 +43,10 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
 };
 
-export default Login;
+export default Update;

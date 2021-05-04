@@ -1,22 +1,20 @@
 import React, { useState } from "react";
-import {apiRegister} from '../api/api'
+import {apiLogin} from '../../api/userApi'
 
-const Register = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
 
-  const onRegister = (e) => {
+  const onLogin = (e) => {
     e.preventDefault();
-    console.log(email,name,password);
-    apiRegister(email,name,password)
+    console.log(email, password);
+    apiLogin(email,password)
   };
 
   return (
     <div>
-      <form onSubmit={onRegister}>
-
-      <label htmlFor="email">Email</label>
+      <form onSubmit={onLogin}>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           id="email"
@@ -24,17 +22,6 @@ const Register = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-
-           <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          required
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        
-
         <label htmlFor="password">Password</label>
         <input
           type="text"
@@ -43,10 +30,10 @@ const Register = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Submit</button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );
 };
 
-export default Register;
+export default Login;
