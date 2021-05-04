@@ -14,7 +14,9 @@ const Register = () => {
 
   return (
     <div>
-      <form onSubmit={onRegister}>
+      <h3>REGISTER</h3>
+      <form onSubmit={onRegister} style={{display:"flex"}}>
+      
 
       <label htmlFor="email">Email</label>
         <input

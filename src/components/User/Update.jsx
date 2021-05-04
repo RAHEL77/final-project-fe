@@ -14,7 +14,9 @@ const Update = () => {
 
   return (
     <div>
-      <form onSubmit={onUpdate}>
+            <h3>UPDATE USER</h3>
+
+      <form onSubmit={onUpdate} style={{display:"flex"}}>
 
       <label htmlFor="email">Email</label>
         <input
