@@ -1,6 +1,6 @@
 export const apiLogin = async (email, password) => {
   const response = await fetch(
-    `${process.env.REACT_APP_BACKEND}/api/users/login`,
+    `${process.env.REACT_APP_BACKEND}/api/auth/login`,
     {
       method: "post",
       body: JSON.stringify({ email, password }),
@@ -9,11 +9,12 @@ export const apiLogin = async (email, password) => {
   );
   const data = await response.json();
   console.log(data);
+  localStorage.setItem('token', JSON.stringify(data.token))
 };
 
 export const apiRegister = async (email,name,password) => {
   const response = await fetch(
-    `${process.env.REACT_APP_BACKEND}/api/users/register`,
+    `${process.env.REACT_APP_BACKEND}/api/auth/register`,
     {
       method: "post",
       body: JSON.stringify({ email,name,password}),
