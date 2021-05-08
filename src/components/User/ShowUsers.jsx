@@ -1,21 +1,21 @@
 import React,{useState,useEffect} from 'react'
-import CaseItem from './CaseItem'
-import {apiGetCases} from '../../api/caseApi'
+import UserItem from './UserItem'
+import {apiGetUsers} from '../../api/userApi'
 
-export default function CaseItems() {
-    const [cases,setCases]=useState([])
-        const getCases=async()=>{
-            const data=await apiGetCases()
-            setCases(data)
+export default function UserItems() {
+    const [users,setUsers]=useState([])
+        const getUsers=async()=>{
+            const data=await apiGetUsers()
+            setUsers(data)
         }
         useEffect(()=>{
-            getCases()
+            getUsers()
         },[])
         
     return (
         <div>
-            {cases.map((case1)=>{
-                <CaseItem case1={case1} key={case1.caseId}/>
+            {users.map((user)=>{
+                <UserItem user={user} key={user.userId}/>
             })}
         </div>
     )
