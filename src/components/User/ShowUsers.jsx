@@ -15,7 +15,7 @@ export default function UserItems() {
     return (
         <div>
             {users.map((user)=>{
-                <UserItem user={user} key={user.userId}/>
+                <UserItem user={user} key={user._id}/>
             })}
         </div>
     )
