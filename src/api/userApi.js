@@ -39,3 +39,20 @@ export const apiUpdate = async (email,name,password) => {
 };
 
 
+export const apiGetUsers = async () => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/api/users`,
+    {method: "get"}
+  );
+  const data = await response.json();
+  console.log(data);
+};
+
+export const apiDelete = async (userId) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/api/users/${userId}`,
+    {method: "delete"}
+  );
+  const data = await response.json();
+  console.log(data);
+};
