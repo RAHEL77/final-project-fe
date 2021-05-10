@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { apiAddCase } from "../../api/caseApi";
 
-const AddCase = () => {
+const AddCharge = () => {
   const [description, setDescription] = useState("");
   const [isDone, setIsDone] = useState(false);
   const [maintenanceSupplier, setMaintenanceSupplier] = useState("");
@@ -66,4 +66,4 @@ const AddCase = () => {
   );
 };
 
-export default AddApartment;
+export default AddCharge;
