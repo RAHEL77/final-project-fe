@@ -1,3 +1,4 @@
+
 export const apiLogin = async (email, password) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND}/api/auth/login`,
@@ -46,6 +47,7 @@ export const apiGetUsers = async () => {
   );
   const data = await response.json();
   console.log(data);
+  return data.allUsers
 };
 
 export const apiDelete = async (userId) => {

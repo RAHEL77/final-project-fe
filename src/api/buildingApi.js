@@ -8,22 +8,19 @@ const getToken = () => {
   const token = JSON.parse(rawToken);
   return token;
 };
-//add new case
-export const apiAddCase = async (
-  description,
-  isDone,
-  maintenanceSupplier,
-  costOfFix
+//add new building
+export const apiAddBuilding = async (
+  balance, addressOfBuilding, chargeOfFixed,chargeOfRegular,payments,userId
 ) => {
   const token = getToken();
   if (!token) {
     return;
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BACKEND}/api/cases`,
+    `${process.env.REACT_APP_BACKEND}/api/buildings`,
     {
       method: "post",
-      body: JSON.stringify({ description, isDone, maintenanceSupplier,costOfFix }),
+      body: JSON.stringify({ balance, addressOfBuilding, chargeOfFixed,chargeOfRegular,payments,userId }),
       headers: {
         "content-type": "application/json",
         authorization: `bearer ${token}`,
@@ -34,26 +31,27 @@ export const apiAddCase = async (
   console.log(data);
 };
 
-export const apiGetCases=async ()=>{
+export const apiGetBuildings=async ()=>{
   const token = getToken();
   if (!token) {
     return;
   }
-  const data=await axios.get(`${process.env.REACT_APP_BACKEND}/api/cases`,
+  const data=await axios.get(`${process.env.REACT_APP_BACKEND}/api/buildings`,
   {headers:{
     "authorization":"bearer "+token
   }})
   return data.data;
 }
 
-export const apiUpdate = async (description, isDone, maintenanceSupplier,costOfFix,_id) => {
+export const apiUpdate =
+ async (balance, addressOfBuilding, chargeOfFixed,chargeOfRegular,payments,userId) => {
   const token = getToken();
   if (!token) {
     return;
   }
-  const response = await fetch(`${process.env.REACT_APP_BACKEND}/api/cases`, {
+  const response = await fetch(`${process.env.REACT_APP_BACKEND}/api/buildings`, {
     method: "put",
-    body: JSON.stringify({ description, isDone, maintenanceSupplier,costOfFix,_id }),
+    body: JSON.stringify({ balance, addressOfBuilding, chargeOfFixed,chargeOfRegular,payments,userId }),
     headers: {
       "content-type": "application/json",
       authorization: `bearer ${token}`,

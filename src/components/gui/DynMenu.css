@@ -1,0 +1,9 @@
+.DynMenu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Active-item{
+    font-weight: bold;
+    color: red;
+}

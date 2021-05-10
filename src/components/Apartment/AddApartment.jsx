@@ -1,11 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import {apiGetUsers} from '../../api/userApi'
 import {apiAdd} from '../../api/apartmentApi'
+import './AddApartment.css'
+import TextInput from '../gui/TextInput'
+import SelectInput from '../gui/SelectInput'
+
+
 
 const AddApartment = () => {
   const [numOfApartment, setnumOfApartment] = useState("");
   const [floor, setFloor] = useState("");
   const [sizeOfApartment, setSizeOfApartment] = useState("");
   const [userId, setUserId] = useState("");
+
+  const [allUsers, setAllUsers] = useState([]);
+
+
+   const getAllUsers=async ()=>{
+    const users=await apiGetUsers()
+    setAllUsers(users.map((u)=>{
+    return {...u,id:u._id}
+    }))
+   }
+
+    useEffect(()=>{
+      getAllUsers()    
+  },[])
+
 
   const onAddApartment = (e) => {
     e.preventDefault();
@@ -14,20 +35,12 @@ const AddApartment = () => {
   };
 
   return (
-    <div>
+    <div className="AddApartment">
       <h3>ADD APARTMENT</h3>
       <form onSubmit={onAddApartment} style={{display:"flex"}}>
-
-      <label htmlFor="numOfApartment">Apartment Number</label>
-        <input
-          type="number"
-          id="numOfApartment"
-          required
-          value={numOfApartment}
-          onChange={(e) => setnumOfApartment(+e.target.value)}
-        />
-
-           <label htmlFor="floor">Floor</label>
+      <TextInput  id="numOfApartment" value={numOfApartment} title ="Apartment Number" setter={setnumOfApartment}/>
+      
+        <label htmlFor="floor">Floor</label>
         <input
           type="number"
           id="floor"
@@ -44,14 +57,8 @@ const AddApartment = () => {
           onChange={(e) => setSizeOfApartment(+e.target.value)}
         />
 
-        <label htmlFor="userId">User</label>
-        <input
-          type="text"
-          id="userId"
-          required
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
-        />
+        
+        <SelectInput  id="userId" value={userId} setter={setUserId} options={allUsers}/>
         <button type="submit">Submit</button>
       </form>
     </div>

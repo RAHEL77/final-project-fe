@@ -8,22 +8,19 @@ const getToken = () => {
   const token = JSON.parse(rawToken);
   return token;
 };
-//add new case
-export const apiAddCase = async (
-  description,
-  isDone,
-  maintenanceSupplier,
-  costOfFix
+//add new chargeOfRegular
+export const apiAddChargeOfRegular = async (
+  dateOfpayment, amount, typeOfRegular,payer,receivedBy,typeOfPayment
 ) => {
   const token = getToken();
   if (!token) {
     return;
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BACKEND}/api/cases`,
+    `${process.env.REACT_APP_BACKEND}/api/chargeOfRegular`,
     {
       method: "post",
-      body: JSON.stringify({ description, isDone, maintenanceSupplier,costOfFix }),
+      body: JSON.stringify({ dateOfpayment, amount, typeOfRegular,payer,receivedBy,typeOfPayment }),
       headers: {
         "content-type": "application/json",
         authorization: `bearer ${token}`,
@@ -34,26 +31,26 @@ export const apiAddCase = async (
   console.log(data);
 };
 
-export const apiGetCases=async ()=>{
+export const apiGetChargeOfRegulars=async ()=>{
   const token = getToken();
   if (!token) {
     return;
   }
-  const data=await axios.get(`${process.env.REACT_APP_BACKEND}/api/cases`,
+  const data=await axios.get(`${process.env.REACT_APP_BACKEND}/api/chargeOfRegulars`,
   {headers:{
     "authorization":"bearer "+token
   }})
   return data.data;
 }
 
-export const apiUpdate = async (description, isDone, maintenanceSupplier,costOfFix,_id) => {
+export const apiUpdate = async (dateOfpayment, amount, typeOfRegular,payer,receivedBy,typeOfPayment) => {
   const token = getToken();
   if (!token) {
     return;
   }
-  const response = await fetch(`${process.env.REACT_APP_BACKEND}/api/cases`, {
+  const response = await fetch(`${process.env.REACT_APP_BACKEND}/api/chargeOfRegular`, {
     method: "put",
-    body: JSON.stringify({ description, isDone, maintenanceSupplier,costOfFix,_id }),
+    body: JSON.stringify({dateOfpayment, amount, typeOfRegular,payer,receivedBy,typeOfPayment }),
     headers: {
       "content-type": "application/json",
       authorization: `bearer ${token}`,

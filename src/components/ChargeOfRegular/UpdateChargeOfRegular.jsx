@@ -8,15 +8,15 @@ const AddCase = () => {
   const [costOfFix, setCostOfFix] = useState(0);
   const [userId, setUserId] = useState("");
 
-  const onAddCase = (e) => {
+  const onUpdateCase = (e) => {
     e.preventDefault();
-    apiAddCase(description, isDone, maintenanceSupplier, costOfFix);
+    apiAddCase(description, isDone, maintenanceSupplier, costOfFix,userId);
   };
 
   return (
     <div>
-      <h3>ADD CASE</h3>
-      <form onSubmit={onAddCase} style={{ display: "flex" }}>
+      <h3>UPDATE CASE</h3>
+      <form onSubmit={onUpdateCase} style={{ display: "flex" }}>
         <label htmlFor="description">Case Description</label>
         <input
           type="text"
@@ -66,4 +66,4 @@ const AddCase = () => {
   );
 };
 
-export default AddCase;
+export default AddApartment;

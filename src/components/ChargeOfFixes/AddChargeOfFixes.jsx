@@ -66,4 +66,4 @@ const AddCase = () => {
   );
 };
 
-export default AddCase;
+export default AddApartment;

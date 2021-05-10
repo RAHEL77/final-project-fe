@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const getToken = () => {
   const rawToken = localStorage.getItem('token');
   if(!rawToken){

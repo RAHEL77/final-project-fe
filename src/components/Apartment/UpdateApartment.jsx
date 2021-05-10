@@ -1,20 +1,22 @@
 import React, { useState } from "react";
-import {apiUpdate} from '../../api/userApi'
+import {apiUpdate} from '../../api/apartmentApi'
 
 const Update = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [apartmentId, setApartmentId] = useState();
+  const [numOfApartment, setNumOfApartment] = useState(1);
+  const [floor, setFloor] = useState(1);
+  const [sizeOfApartment, setSizeOfApartment] = useState(18);
+  // const [userId, setUserId] = useState();
 
   const onUpdate = (e) => {
     e.preventDefault();
-    console.log(email,name,password);
-    apiUpdate(email,name,password)
+    console.log(apartmentId,numOfApartment,floor,sizeOfApartment);
+    apiUpdate(apartmentId,numOfApartment,floor,sizeOfApartment)
   };
 
   return (
     <div>
-            <h3>UPDATE USER</h3>
+      <h3>UPDATE APARTMENT</h3>
 
       <form onSubmit={onUpdate} style={{display:"flex"}}>
 

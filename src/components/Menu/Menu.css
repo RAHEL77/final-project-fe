@@ -1,0 +1,16 @@
+.Menu {
+  display: flex;
+  justify-content: space-between;
+  background-color: #669999;
+  padding:30px;
+}
+
+.Active-item{
+    font-weight: bold;
+    color: red;
+}
+a{
+  text-decoration: none;
+  color: #331a00;
+  font-size: larger;
+}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {apiUpdate} from '../../api/userApi'
 
-const Update = () => {
+const UpdateUser = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -51,4 +51,4 @@ const Update = () => {
   );
 };
 
-export default Update;
+export default UpdateUser;
