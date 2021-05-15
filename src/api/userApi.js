@@ -46,9 +46,20 @@ export const apiGetUsers = async () => {
     {method: "get"}
   );
   const data = await response.json();
-  console.log(data);
   return data.allUsers
 };
+
+
+export const apiGetUser = async (id) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND}/api/users/${id}`,
+    {method: "get"}
+  );
+  const data = await response.json();
+  console.log(data);
+  return data
+};
+
 
 export const apiDelete = async (userId) => {
   const response = await fetch(

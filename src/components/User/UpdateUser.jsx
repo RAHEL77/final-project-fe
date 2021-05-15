@@ -1,11 +1,25 @@
-import React, { useState } from "react";
-import {apiUpdate} from '../../api/userApi'
+import React, { useState,useEffect } from "react";
+import {apiUpdate,apiGetUser} from '../../api/userApi'
+import {useParams} from 'react-router-dom'
+
 
 const UpdateUser = () => {
+  const params= useParams()
+  console.log(params)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  
+  useEffect(()=>{
+   const f=async()=>{
+     const data= await apiGetUser(params.userId)
+     setEmail(data.existingUser.email)
+     setName(data.existingUser.name)
+    }
 
+   f()
+
+  },[])
   const onUpdate = (e) => {
     e.preventDefault();
     console.log(email,name,password);

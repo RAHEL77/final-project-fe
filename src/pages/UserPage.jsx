@@ -10,6 +10,7 @@ export default function UserPage() {
                 <UpdateUser />
                 <ShowUsers/>
                 <Register/>
+                
           </div>
     )
 }

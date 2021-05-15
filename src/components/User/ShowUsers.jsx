@@ -5,7 +5,7 @@ import {apiGetUsers} from '../../api/userApi'
 export default function UserItems() {
     const [users,setUsers]=useState([])
         const getUsers=async()=>{
-            const data=await apiGetUsers()
+            const data=await apiGetUsers();
             setUsers(data)
         }
         useEffect(()=>{
@@ -14,9 +14,8 @@ export default function UserItems() {
         
     return (
         <div>
-            {users && users.map((user)=>{
-                <UserItem user={user} key={user._id}/>
-            })}
+            {users && users.map((user)=><UserItem user={user} key={user._id}/>
+            )}
         </div>
     )
 }

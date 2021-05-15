@@ -5,7 +5,6 @@ import './Menu.css'
 export default function Menu() {
     return (
         <div className="Menu">
-            <NavLink to="/tenants" activeClassName="Active-item" >tenants</NavLink>
             <NavLink to="/apartment"  activeClassName="Active-item">apartment</NavLink>
             <NavLink to="/payments" activeClassName="Active-item">payments</NavLink>
             <NavLink to="/cases" activeClassName="Active-item">cases</NavLink>

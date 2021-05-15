@@ -49,17 +49,28 @@ export const apiGetApartments=async ()=>{
   return data.data;
 }
 
-
+// get 
+export const apiGetApartment=async (apartmentId)=>{
+  const token = getToken();
+  if (!token) {
+    return;
+  }
+  const data=await axios.get(`${process.env.REACT_APP_BACKEND}/api/apartments/${apartmentId}`,
+  {headers:{
+    "authorization":"bearer "+token
+  }})
+  return data.data;
+}
 
 //******update
-export const apiUpdate = async (email, name, password) => {
+export const apiUpdate = async (apartmentId, numOfApartment, floor, sizeOfApartment,userId) => {
   const token = getToken();
   if(!token){
     return;
   }
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/api/apartments`, {
     method: "put",
-    body: JSON.stringify({ email, name, password }),
+    body: JSON.stringify({ apartmentId, numOfApartment, floor, sizeOfApartment,userId }),
     headers: {
       "content-type": "application/json",
       "authorization": `bearer ${token}`,

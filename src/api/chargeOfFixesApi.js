@@ -16,7 +16,7 @@ export const apiAddChargeOfFixes = async (
   caseOf,
   payer,
   receivedBy,
-  typeOfPayment,
+  typeOfCharge,
   userId,
 ) => {
   const token = getToken();
@@ -34,7 +34,7 @@ export const apiAddChargeOfFixes = async (
         caseOf,
         payer,
         receivedBy,
-        typeOfPayment,
+        typeOfCharge,
         userId, }),
       headers: {
         "content-type": "application/json",
@@ -65,7 +65,7 @@ export const apiUpdate = async (
   caseOf,
   payer,
   receivedBy,
-  typeOfPayment,
+  typeOfCharge,
   userId) => {
   const token = getToken();
   if (!token) {
@@ -80,7 +80,7 @@ export const apiUpdate = async (
       caseOf,
       payer,
       receivedBy,
-      typeOfPayment,
+      typeOfCharge,
       userId }),
     headers: {
       "content-type": "application/json",

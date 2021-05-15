@@ -1,52 +1,78 @@
-import React, { useState } from "react";
-import {apiUpdate} from '../../api/apartmentApi'
+import React, { useState, useEffect } from "react";
+import { apiUpdate,apiGetApartment } from "../../api/apartmentApi";
+import { useParams } from "react-router-dom";
+import TextInput from "../gui/TextInput";
+import SelectInput from "../gui/SelectInput";
+import { apiGetUsers } from "../../api/userApi";
 
 const Update = () => {
   const [apartmentId, setApartmentId] = useState();
   const [numOfApartment, setNumOfApartment] = useState(1);
   const [floor, setFloor] = useState(1);
   const [sizeOfApartment, setSizeOfApartment] = useState(18);
-  // const [userId, setUserId] = useState();
+  const [userId, setUserId] = useState();
+  const [allUsers, setAllUsers] = useState([]);
+  const params = useParams();
+  console.log(params);
+
+  const getAllUsers = async () => {
+    const users = await apiGetUsers();
+    setAllUsers(
+      users.map((u) => {
+        return { ...u, id: u._id };
+      })
+    );
+  };
+
+  const getApartment = async () => {
+    const apartment = await apiGetApartment(params.apartmentId);
+    console.log(apartment);
+    setUserId(apartment.userId);
+    setApartmentId(apartment._id)
+    setSizeOfApartment(apartment.sizeOfApartment)
+    setFloor(apartment.floor)
+    setNumOfApartment(numOfApartment)
+        };
+
+  useEffect(() => {
+    getAllUsers();
+    getApartment();
+  }, []);
 
   const onUpdate = (e) => {
     e.preventDefault();
-    console.log(apartmentId,numOfApartment,floor,sizeOfApartment);
-    apiUpdate(apartmentId,numOfApartment,floor,sizeOfApartment)
+    console.log(apartmentId, numOfApartment, floor, sizeOfApartment);
+    apiUpdate(apartmentId, numOfApartment, floor, sizeOfApartment,userId);
   };
 
   return (
     <div>
       <h3>UPDATE APARTMENT</h3>
 
-      <form onSubmit={onUpdate} style={{display:"flex"}}>
-
-      <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+      <form onSubmit={onUpdate} style={{ display: "flex" }}>
+        <TextInput
+          id="numOfApartment"
+          value={numOfApartment}
+          setter={setNumOfApartment}
+          title="NumOf Apartment"
         />
 
-           <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          required
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        
+        <TextInput id="floor" value={floor} setter={setFloor} title="Floor" />
 
-        <label htmlFor="password">Password</label>
-        <input
-          type="text"
-          id="password"
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+        <TextInput
+          id="sizeOfApartment"
+          value={sizeOfApartment}
+          setter={setSizeOfApartment}
+          title="size Of Apartment "
         />
+
+        <SelectInput
+          id="userId"
+          value={userId}
+          setter={setUserId}
+          options={allUsers}
+        />
+
         <button type="submit">Submit</button>
       </form>
     </div>
