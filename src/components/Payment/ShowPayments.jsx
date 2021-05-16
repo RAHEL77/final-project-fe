@@ -1,21 +1,21 @@
 import React,{useState,useEffect} from 'react'
-import CaseItem from './CaseItem'
-import {apiGetCases} from '../../api/caseApi'
+import PaymentItem from './PaymentItem'
+import {apiGetPayments} from '../../api/paymentApi'
 
 export default function ShowCases() {
-    const [cases,setCases]=useState([])
-        const getCases=async()=>{
-            const data=await apiGetCases()
-            setCases(data)
+    const [payment,setPayment]=useState([])
+        const getPayments=async()=>{
+            const data=await apiGetPayments()
+            setPayment(data)
         }
         useEffect(()=>{
-            getCases()
+            getPayments()
         },[])
         
     return (
         <div>
-            {cases.map((case1)=>{
-                <CaseItem case1={case1} key={case1._id}/>
+            {payments.map((payment)=>{
+                <PaymentItem payment={payment} key={payment._id}/>
             })}
         </div>
     )

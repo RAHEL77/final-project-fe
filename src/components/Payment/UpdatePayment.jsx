@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { apiAddCase } from "../../api/caseApi";
+import { apiAddPayment } from "../../api/paymentApi";
 
-const AddCase = () => {
+const AddPayment = () => {
   const [description, setDescription] = useState("");
   const [isDone, setIsDone] = useState(false);
   const [maintenanceSupplier, setMaintenanceSupplier] = useState("");
