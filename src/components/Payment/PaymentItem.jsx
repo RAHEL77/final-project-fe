@@ -1,14 +1,14 @@
 import React from 'react'
 
-export default function CaseItem(props) {
-    const {case1}=props;
+export default function PaymentItem(props) {
+    const {payment}=props;
         return (
         <div>
-            <div>{case1.description}</div>
-            <div>{case1.isDone}</div>
-            <div>{case1.maintenanceSupplier}</div>
-            <div>{case1.costOfFix}</div>
-            <div>{case1.user}</div>
+            <div>{payment.dateOfPayment}</div>
+            <div>{payment.amount}</div>
+            <div>{payment.details}</div>
+            <div>{payment.payer}</div>
+            <div>{payment.recivedBy}</div>
         </div>
     )
 }

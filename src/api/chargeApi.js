@@ -8,8 +8,8 @@ const getToken = () => {
   const token = JSON.parse(rawToken);
   return token;
 };
-//add new chargeOfFixes
-export const apiAddChargeOfFixes = async (
+//add new charge
+export const apiAddCharge = async (
   _id,
   dateOfPayment,
   amount,
@@ -24,7 +24,7 @@ export const apiAddChargeOfFixes = async (
     return;
   }
   const response = await fetch(
-    `${process.env.REACT_APP_BACKEND}/api/chargeOfFixes`,
+    `${process.env.REACT_APP_BACKEND}/api/charge`,
     {
       method: "post",
       body: JSON.stringify({  
@@ -46,12 +46,12 @@ export const apiAddChargeOfFixes = async (
   console.log(data);
 };
 
-export const apiGetChargeOfFixes=async ()=>{
+export const apiGetCharge=async ()=>{
   const token = getToken();
   if (!token) {
     return;
   }
-  const data=await axios.get(`${process.env.REACT_APP_BACKEND}/api/chargeOfFixes`,
+  const data=await axios.get(`${process.env.REACT_APP_BACKEND}/api/charge`,
   {headers:{
     "authorization":"bearer "+token
   }})
@@ -71,7 +71,7 @@ export const apiUpdate = async (
   if (!token) {
     return;
   }
-  const response = await fetch(`${process.env.REACT_APP_BACKEND}/api/chargeOfFixes`, {
+  const response = await fetch(`${process.env.REACT_APP_BACKEND}/api/charge`, {
     method: "put",
     body: JSON.stringify({  
       _id,

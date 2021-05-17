@@ -10,7 +10,7 @@ const getToken = () => {
 };
 //add new building
 export const apiAddBuilding = async (
-  balance, addressOfBuilding, chargeOfFixed,chargeOfRegular,payments,userId
+  balance, addressOfBuilding, charge,payments,userId
 ) => {
   const token = getToken();
   if (!token) {
@@ -20,7 +20,7 @@ export const apiAddBuilding = async (
     `${process.env.REACT_APP_BACKEND}/api/buildings`,
     {
       method: "post",
-      body: JSON.stringify({ balance, addressOfBuilding, chargeOfFixed,chargeOfRegular,payments,userId }),
+      body: JSON.stringify({ balance, addressOfBuilding, charge,payments,userId }),
       headers: {
         "content-type": "application/json",
         authorization: `bearer ${token}`,
@@ -44,14 +44,14 @@ export const apiGetBuildings=async ()=>{
 }
 
 export const apiUpdate =
- async (balance, addressOfBuilding, chargeOfFixed,chargeOfRegular,payments,userId) => {
+ async (balance, addressOfBuilding, charge,payments,userId) => {
   const token = getToken();
   if (!token) {
     return;
   }
   const response = await fetch(`${process.env.REACT_APP_BACKEND}/api/buildings`, {
     method: "put",
-    body: JSON.stringify({ balance, addressOfBuilding, chargeOfFixed,chargeOfRegular,payments,userId }),
+    body: JSON.stringify({ balance, addressOfBuilding, charge,payments,userId }),
     headers: {
       "content-type": "application/json",
       authorization: `bearer ${token}`,

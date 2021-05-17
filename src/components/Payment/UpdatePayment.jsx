@@ -2,63 +2,63 @@ import React, { useState } from "react";
 import { apiAddPayment } from "../../api/paymentApi";
 
 const AddPayment = () => {
-  const [description, setDescription] = useState("");
-  const [isDone, setIsDone] = useState(false);
-  const [maintenanceSupplier, setMaintenanceSupplier] = useState("");
-  const [costOfFix, setCostOfFix] = useState(0);
-  const [userId, setUserId] = useState("");
+  const [dateOfPayment, setDateOfPayment] = useState("");
+  const [amount, setAmount] = useState(false);
+  const [details, setDetails] = useState("");
+  const [payer, setPayer] = useState(0);
+  const [recivedBy, setRecivedBy] = useState("");
 
-  const onUpdateCase = (e) => {
+  const onUpdatePayment = (e) => {
     e.preventDefault();
-    apiAddCase(description, isDone, maintenanceSupplier, costOfFix,userId);
+    apiAddPayment(dateOfPayment, amount, details, payer,recivedBy);
   };
 
   return (
     <div>
-      <h3>UPDATE CASE</h3>
-      <form onSubmit={onUpdateCase} style={{ display: "flex" }}>
-        <label htmlFor="description">Case Description</label>
+      <h3>UPDATE PAYMENT</h3>
+      <form onSubmit={onUpdatePayment} style={{ display: "flex" }}>
+        <label htmlFor="dateOfPayment">Payment date  Of  Payment</label>
         <input
           type="text"
-          id="description"
+          id="dateOfPayment"
           required
-          value={description}
-          onChange={(e) => setDescription(+e.target.value)}
+          value={dateOfPayment}
+          onChange={(e) => setDateOfPayment(+e.target.value)}
         />
 
-        <label htmlFor="isDone">Floor</label>
+        <label htmlFor="amount">Floor</label>
         <input
-          type="text"
-          id="isDone"
+          type="Number"
+          id="amount"
           required
-          value={isDone}
-          onChange={(e) => setIsDone(+e.target.value)}
+          value={amount}
+          onChange={(e) => setAmount(+e.target.value)}
         />
 
-        <label htmlFor="maintenanceSupplier">Size Of Apartment</label>
+        <label htmlFor="details"> Payments details</label>
         <input
           type="text"
-          id="maintenanceSupplier"
+          id="details"
           required
-          value={maintenanceSupplier}
-          onChange={(e) => setMaintenanceSupplier(+e.target.value)}
+          value={details}
+          onChange={(e) => setDetails(+e.target.value)}
         />
 
-        <label htmlFor="costOfFix">User</label>
-        <input
-          type="number"
-          id="costOfFix"
-          required
-          value={costOfFix}
-          onChange={(e) => setCostOfFix(e.target.value)}
-        />
-        <label htmlFor="userId">User</label>
+        <label htmlFor="payer">User</label>
         <input
           type="text"
-          id="userId"
+          id="payer"
           required
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
+          value={payer}
+          onChange={(e) => setPayer(e.target.value)}
+        />
+        <label htmlFor="recivedBy">User</label>
+        <input
+          type="text"
+          id="recivedBy"
+          required
+          value={recivedBy}
+          onChange={(e) => setRecivedBy(e.target.value)}
         />
         <button type="submit">Submit</button>
       </form>
@@ -66,4 +66,4 @@ const AddPayment = () => {
   );
 };
 
-export default AddApartment;
+export default AddPayment;

@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import PaymentItem from './PaymentItem'
 import {apiGetPayments} from '../../api/paymentApi'
 
-export default function ShowCases() {
+export default function ShowPayments() {
     const [payment,setPayment]=useState([])
         const getPayments=async()=>{
             const data=await apiGetPayments()

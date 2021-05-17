@@ -1,21 +1,21 @@
 import React,{useState,useEffect} from 'react'
-import CaseItem from './CaseItem'
-import {apiGetCases} from '../../api/caseApi'
+import ChargeItem from './ChargeItem'
+import {apiGetCharge} from '../../api/chargeApi'
 
-export default function ShowCases() {
-    const [cases,setCases]=useState([])
-        const getCases=async()=>{
-            const data=await apiGetCases()
-            setCases(data)
+export default function ShowCharge() {
+    const [charges,setCharge]=useState([])
+        const getCharges=async()=>{
+            const data=await apiGetCharge()
+            setCharge(data)
         }
         useEffect(()=>{
-            getCases()
+            getCharges()
         },[])
         
     return (
         <div>
-            {cases.map((case1)=>{
-                <CaseItem case1={case1} key={case1._id}/>
+            {charges.map((charge)=>{
+                <CaseItem charge={charge} key={charge._id}/>
             })}
         </div>
     )
