@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { apiAddCase } from "../../api/caseApi";
+import { apiAddCharge } from "../../api/caseApi";
 
 const AddCase = () => {
   const [description, setDescription] = useState("");
