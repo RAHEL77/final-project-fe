@@ -10,7 +10,8 @@ export const apiLogin = async (email, password) => {
   );
   const data = await response.json();
   console.log(data);
-  localStorage.setItem('token', JSON.stringify(data.token))
+  localStorage.setItem('token', JSON.stringify(data.token));
+  return data;
 };
 
 export const apiRegister = async (email,name,password) => {

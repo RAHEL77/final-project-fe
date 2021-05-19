@@ -15,7 +15,7 @@ export default function ShowCharge() {
     return (
         <div>
             {charges.map((charge)=>{
-                <CaseItem charge={charge} key={charge._id}/>
+                <ChargeItem charge={charge} key={charge._id}/>
             })}
         </div>
     )

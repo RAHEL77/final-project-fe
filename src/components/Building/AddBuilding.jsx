@@ -1,64 +1,64 @@
 import React, { useState } from "react";
-import { apiAddCase } from "../../api/caseApi";
+import { apiAddBuilding } from "../../api/buildingApi";
 
-const AddCase = () => {
-  const [description, setDescription] = useState("");
-  const [isDone, setIsDone] = useState(false);
+const AddBuilding = () => {
+  const [balance, setBalance] = useState("");
+  const [addressOfBuilding, setAddressOfBuilding] = useState(false);
   const [maintenanceSupplier, setMaintenanceSupplier] = useState("");
   const [costOfFix, setCostOfFix] = useState(0);
   const [userId, setUserId] = useState("");
 
-  const onAddCase = (e) => {
+  const onAddBuilding = (e) => {
     e.preventDefault();
-    apiAddCase(description, isDone, maintenanceSupplier, costOfFix);
+    apiAddBuilding(balance, addressOfBuilding, charges, payments,users);
   };
 
   return (
     <div>
-      <h3>ADD CASE</h3>
-      <form onSubmit={onAddCase} style={{ display: "flex" }}>
-        <label htmlFor="description">Case Description</label>
-        <input
-          type="text"
-          id="description"
-          required
-          value={description}
-          onChange={(e) => setDescription(+e.target.value)}
-        />
-
-        <label htmlFor="isDone">Floor</label>
-        <input
-          type="text"
-          id="isDone"
-          required
-          value={isDone}
-          onChange={(e) => setIsDone(+e.target.value)}
-        />
-
-        <label htmlFor="maintenanceSupplier">Size Of Apartment</label>
-        <input
-          type="text"
-          id="maintenanceSupplier"
-          required
-          value={maintenanceSupplier}
-          onChange={(e) => setMaintenanceSupplier(+e.target.value)}
-        />
-
-        <label htmlFor="costOfFix">User</label>
+      <h3>ADD BUILDING</h3>
+      <form onSubmit={onAddBuilding} style={{ display: "flex" }}>
+        <label htmlFor="balance">BALANCE</label>
         <input
           type="number"
-          id="costOfFix"
+          id="balance"
           required
-          value={costOfFix}
-          onChange={(e) => setCostOfFix(e.target.value)}
+          value={balance}
+          onChange={(e) => setBalance(+e.target.value)}
         />
-        <label htmlFor="userId">User</label>
+
+        <label htmlFor="addressOfBuilding">ADRESS</label>
         <input
           type="text"
-          id="userId"
+          id="addressOfBuilding"
           required
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
+          value={addressOfBuilding}
+          onChange={(e) => setAddressOfBuilding(+e.target.value)}
+        />
+
+        <label htmlFor="charges">CHARGE</label>
+        <input
+          type="number"
+          id="charges"
+          required
+          value={charges}
+          onChange={(e) => setCharges(+e.target.value)}
+        />
+
+        <label htmlFor="payments">payments</label>
+        <input
+          type="number"
+          id="payments"
+          required
+          value={payments}
+          onChange={(e) => setPayments(e.target.value)}
+        />
+        <label htmlFor="users">User</label>
+        <input
+          type="text"
+          id="users"
+          required
+          value={users}
+          onChange={(e) => setUsers(e.target.value)}
         />
         <button type="submit">Submit</button>
       </form>

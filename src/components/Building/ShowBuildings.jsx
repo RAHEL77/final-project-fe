@@ -1,21 +1,21 @@
 import React,{useState,useEffect} from 'react'
-import CaseItem from './CaseItem'
-import {apiGetCases} from '../../api/caseApi'
+import BuildingItem from './BuildingItem'
+import {apiGetBuildings} from '../../api/buildingApi'
 
-export default function ShowCases() {
-    const [cases,setCases]=useState([])
-        const getCases=async()=>{
-            const data=await apiGetCases()
-            setCases(data)
+export default function ShowBuilding() {
+    const [buildings,setBuildings]=useState([])
+        const getBuildings=async()=>{
+            const data=await apiGetBuildings()
+            setBuildings(data)
         }
         useEffect(()=>{
-            getCases()
+            getBuildings()
         },[])
         
     return (
         <div>
-            {cases.map((case1)=>{
-                <CaseItem case1={case1} key={case1._id}/>
+            {buildings.map((building)=>{
+                <BuildingItem building={building} key={building._id}/>
             })}
         </div>
     )

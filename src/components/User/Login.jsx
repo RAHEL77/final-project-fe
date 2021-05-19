@@ -1,14 +1,24 @@
 import React, { useState } from "react";
-import {apiLogin} from '../../api/userApi'
+import {apiLogin} from '../../api/userApi';
+import {useHistory} from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onLogin = (e) => {
+  const history = useHistory();
+
+  const onLogin = async(e) => {
     e.preventDefault();
     console.log(email, password);
-    apiLogin(email,password)
+    localStorage.removeItem('token')
+    const resp = await apiLogin(email,password);
+    const rawToken = localStorage.getItem('token');
+    
+    if(!resp.msg)
+      history.push('/main')
+    else
+      alert(resp.msg)
   };
 
   return (

@@ -12,14 +12,14 @@ const AddCharge = () => {
 
   const onAddCharge = (e) => {
     e.preventDefault();
-    apiAddCase(dateOfCharge, amount, caseOf, payer, receivedBy, typeOfCharge);
+    apiAddCharge(dateOfCharge, amount, caseOf, payer, receivedBy, typeOfCharge);
   };
 
   return (
     <div>
       <h3>ADD CHARGE</h3>
       <form onSubmit={onAddCharge} style={{ display: "flex" }}>
-        <label htmlFor="dateOfCharge">Case Description</label>
+        <label htmlFor="dateOfCharge">dateOfCharge </label>
         <input
           type="text"
           id="dateOfCharge"

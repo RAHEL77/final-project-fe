@@ -1,14 +1,14 @@
 import React from 'react'
-
-export default function CaseItem(props) {
-    const {case1}=props;
+//balance, addressOfBuilding, charges, payments,users
+export default function BuildingItem(props) {
+    const {building}=props;
         return (
         <div>
-            <div>{case1.description}</div>
-            <div>{case1.isDone}</div>
-            <div>{case1.maintenanceSupplier}</div>
-            <div>{case1.costOfFix}</div>
-            <div>{case1.user}</div>
+            <div>{building.balance}</div>
+            <div>{building.addressOfBuilding}</div>
+            <div>{building.charges}</div>
+            <div>{building.payments}</div>
+            <div>{building.users}</div>
         </div>
     )
 }
