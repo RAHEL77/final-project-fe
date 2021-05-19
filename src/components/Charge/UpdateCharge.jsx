@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { apiAddCharge } from "../../api/caseApi";
 
-const AddCase = () => {
+const AddCharge = () => {
   const [description, setDescription] = useState("");
   const [isDone, setIsDone] = useState(false);
   const [maintenanceSupplier, setMaintenanceSupplier] = useState("");
