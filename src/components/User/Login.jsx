@@ -26,7 +26,7 @@ const Login = () => {
             <h3>LOGIN</h3>
    
       <form onSubmit={onLogin} style={{display:"flex"}}>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Email:</label>
         <input
           type="email"
           id="email"
